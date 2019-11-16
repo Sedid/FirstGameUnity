@@ -9,9 +9,12 @@ public class EnnemiPoursuite : MonoBehaviour
     static Animator animationsEnnemi;
     public Transform joueur;
     public Slider barrePdv;
+    public Slider barrePdvJoueur;
     public bool attaqueZombie = false;
     float tempsDAttaque = 1f;
     float tempsDebutAttaque;
+    // Position de base de l'ennemi
+    private Vector3 positionInitialeEnnemi;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +32,8 @@ public class EnnemiPoursuite : MonoBehaviour
         // Arrête la poursuite du joueur lorsque l'ennemi meurt
         if (barrePdv.value <= 0)
         {
+            // fait disparaître l'ennemi
+            Destroy(transform.gameObject, 5);
             return;
         }
 
@@ -50,12 +55,18 @@ public class EnnemiPoursuite : MonoBehaviour
                 animationsEnnemi.SetBool("anim_marcher", true);
                 animationsEnnemi.SetBool("anim_attaquer", false);
             }
-            else
+            else if (barrePdvJoueur.value <= 0)
             {
-                animationsEnnemi.SetBool("anim_marcher", false);
-                attaqueZombie = true;
-                tempsDAttaque = Time.time;
-                animationsEnnemi.SetBool("anim_attaquer", true);
+                animationsEnnemi.SetBool("anim_idle", true);
+                attaqueZombie = false;
+                animationsEnnemi.SetBool("anim_attaquer", false);
+            }
+            else if (barrePdvJoueur.value > 0)
+            {
+                    animationsEnnemi.SetBool("anim_marcher", false);
+                    attaqueZombie = true;
+                    tempsDAttaque = Time.time;
+                    animationsEnnemi.SetBool("anim_attaquer", true);
             }
 
             // différence de taille entre le joueur et l'ennemi supprimé, 

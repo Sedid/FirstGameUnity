@@ -21,6 +21,7 @@ public class DegatsRecus : MonoBehaviour
              if (collision.transform.GetComponentInParent<AttaquesDuJoueur>().enAttaque)
             {
                 barrePdv.value -= 30;
+
             }
         if (collision.transform.tag == "ennemi")
             if (collision.transform.GetComponentInParent<EnnemiPoursuite>().attaqueZombie)

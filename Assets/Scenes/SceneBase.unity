@@ -1191,6 +1191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joueur: {fileID: 934885763}
   barrePdv: {fileID: 1009548033}
+  barrePdvJoueur: {fileID: 1749582971}
   attaqueZombie: 0
 --- !u!114 &869206229
 MonoBehaviour:
@@ -1354,8 +1355,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   turnSpeed: 250
-  anim: {fileID: 0}
+  anim: {fileID: 934885765}
   barrePdv: {fileID: 1749582971}
+--- !u!95 &934885765 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9532076, guid: 6fb37f825ee63264b9c2600bf1a52006,
+    type: 3}
+  m_PrefabInstance: {fileID: 934885761}
+  m_PrefabAsset: {fileID: 0}
 --- !u!54 &934885766
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3666,7 +3673,8 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.49771476
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114062226022497710, guid: a8145fd98e506094980d05080bde9072, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a8145fd98e506094980d05080bde9072, type: 3}
 --- !u!1 &1977407350 stripped
 GameObject:
@@ -3708,6 +3716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joueur: {fileID: 934885763}
   barrePdv: {fileID: 1009548033}
+  barrePdvJoueur: {fileID: 0}
   attaqueZombie: 0
 --- !u!1 &2037416422
 GameObject:

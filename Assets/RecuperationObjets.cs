@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class RecuperationObjets : MonoBehaviour
@@ -44,7 +42,6 @@ public class RecuperationObjets : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Angry") && Input.GetKeyDown(KeyCode.X))
         {
-            Debug.Log("Hey");
             other.gameObject.SetActive(false);
             count = count - 1;
             winText.text = "-1";
