@@ -12,8 +12,6 @@ public class DegatsRecus : MonoBehaviour
  
     private void OnCollisionEnter(Collision collision)
     {
-        print(transform.name + "touche par "+ collision.gameObject.name);
-        print(collision.gameObject.tag);
         if(collision.gameObject.tag != ennemi)
         {
             return;
@@ -22,14 +20,12 @@ public class DegatsRecus : MonoBehaviour
        if(collision.transform.tag == "joueur")
              if (collision.transform.GetComponentInParent<AttaquesDuJoueur>().enAttaque)
             {
-                print(collision.gameObject.name + "enlève des points à " + transform.name);
                 barrePdv.value -= 30;
             }
         if (collision.transform.tag == "ennemi")
             if (collision.transform.GetComponentInParent<EnnemiPoursuite>().attaqueZombie)
             {
                 barrePdv.value -= 30;
-                print(collision.gameObject.name + "enlève des points à " + transform.name);
             }
 
         if (barrePdv.value <= 0)

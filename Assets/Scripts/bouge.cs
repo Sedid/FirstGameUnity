@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class bouge : MonoBehaviour
 {
-    public float vitesse = 0.5f;
+    public float moveSpeed = 5f;
+    public float turnSpeed = 250f;
+    public Animator anim;
     public Slider barrePdv;
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -22,21 +24,39 @@ public class bouge : MonoBehaviour
         {
             return;
         }
+        // Déplacement du personnage
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+        }
+
+
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            transform.Translate(-Vector3.forward * moveSpeed * Time.deltaTime/2);
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
+        }
+
+
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.Rotate(0, vitesse*4, 0);
+            transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
         }
-        else if (Input.GetKey(KeyCode.LeftArrow))
+
+        // Animation walk lorsque fleches haut et bas sont appuyés
+        if ((Input.GetKey(KeyCode.UpArrow)) || (Input.GetKey(KeyCode.DownArrow)))
         {
-            transform.Rotate(0, -vitesse*4, 0);
+            anim.SetBool("anim_marcher", true);
+            anim.SetBool("anim_repos", false);
         }
-        if(Input.GetKey(KeyCode.UpArrow))
+        else
         {
-            transform.Translate(0, 0, vitesse/5);
-        }
-        if(Input.GetKey(KeyCode.DownArrow))
-        {
-            transform.Translate(0, 0, -vitesse/5);
+            anim.SetBool("anim_marcher", false);
+            anim.SetBool("anim_repos", true);
         }
     }
 }

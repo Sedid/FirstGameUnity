@@ -18,17 +18,15 @@ public class AttaquesDuJoueur : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(Time.time - tempsDebutAttaque);
         if(Time.time - tempsDebutAttaque > tempsDAttaque)
         {
             if (enAttaque)
             {
-                print("je te remets");
                 transform.eulerAngles = posAvantFrappe;
             }
             enAttaque = false;
         }
-        if(Input.GetButton("Fire1"))
+        if(Input.GetButton("Fire1") || Input.GetKeyDown(KeyCode.A))
         {
             joueurAnimator.SetBool("anim_attaquer", true);
             enAttaque = true;
