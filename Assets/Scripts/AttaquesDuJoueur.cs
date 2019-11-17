@@ -6,7 +6,7 @@ public class AttaquesDuJoueur : MonoBehaviour
 {
     public bool enAttaque = false;
     static Animator joueurAnimator;
-    public float tempsDAttaque = 2f;
+    public float tempsDAttaque = 0.12f;
     float tempsDebutAttaque;
     Vector3 posAvantFrappe;
     // Start is called before the first frame update
