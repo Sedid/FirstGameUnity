@@ -6,9 +6,12 @@ public class RecuperationObjets : MonoBehaviour
     public Text countText;
     public Text winText;
     private int count;
+    GameObject virus;
 
     private void Start()
     {
+        virus = GameObject.Find("CFX_Virus").gameObject;
+        virus.SetActive(false);
         count = 0;
         SetCountText();
         winText.text = "";
@@ -29,9 +32,11 @@ public class RecuperationObjets : MonoBehaviour
         if (other.gameObject.CompareTag("Love") && Input.GetKeyDown(KeyCode.X))
         {
             other.gameObject.SetActive(false);
+            virus.SetActive(true);
             count = count + 2;
             winText.text = "+2";
             SetCountText();
+            
         }
         else if (other.gameObject.CompareTag("Like") && Input.GetKeyDown(KeyCode.X))
         {
