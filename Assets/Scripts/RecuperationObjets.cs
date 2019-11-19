@@ -32,7 +32,6 @@ public class RecuperationObjets : MonoBehaviour
         if (other.gameObject.CompareTag("Love") && Input.GetKeyDown(KeyCode.X))
         {
             other.gameObject.SetActive(false);
-            virus.SetActive(true);
             count = count + 2;
             winText.text = "+2";
             SetCountText();
@@ -48,6 +47,7 @@ public class RecuperationObjets : MonoBehaviour
         else if (other.gameObject.CompareTag("Angry") && Input.GetKeyDown(KeyCode.X))
         {
             other.gameObject.SetActive(false);
+            virus.SetActive(true);
             count = count - 1;
             winText.text = "-1";
             SetCountText();

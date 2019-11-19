@@ -9,7 +9,16 @@ public class DegatsRecus : MonoBehaviour
     public Slider barrePdv;
     Animator animations;
     public string ennemi;
- 
+    GameObject bamVFX;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        animations = GetComponent<Animator>();
+        bamVFX = GameObject.Find("CFX_Hit").gameObject;
+        bamVFX.SetActive(false);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag != ennemi)
@@ -21,23 +30,34 @@ public class DegatsRecus : MonoBehaviour
              if (collision.transform.GetComponentInParent<AttaquesDuJoueur>().enAttaque)
             {
                 barrePdv.value -= 30;
-
+                Debug.Log("J'attaque le zombie");
+                bamVFX.SetActive(true);
+                animations.SetBool("anim_degatsRecus", false);
             }
         if (collision.transform.tag == "ennemi")
             if (collision.transform.GetComponentInParent<EnnemiPoursuite>().attaqueZombie)
             {
                 barrePdv.value -= 30;
+                //Debug.Log("dégâts pris par le joueur");
+                animations.SetBool("anim_repos", false);
+                animations.SetBool("anim_marcher", false);
+                animations.SetBool("anim_attaquer", false);
+                animations.SetBool("anim_degatsRecus", true);
             }
 
         if (barrePdv.value <= 0)
         {
             animations.SetBool("anim_mort", true);
+            Destroy(bamVFX);
         }
     }
-    // Start is called before the first frame update
-    void Start()
+    private void OnCollisionExit(Collision collision)
     {
-        animations = GetComponent<Animator>();
+        if (collision.transform.tag == "ennemi")
+            if (collision.transform.GetComponentInParent<EnnemiPoursuite>().attaqueZombie)
+            {
+                animations.SetBool("anim_degatsRecus", false);
+            }
     }
 
     // Update is called once per frame
