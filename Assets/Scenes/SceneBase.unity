@@ -367,7 +367,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800004, guid: f95ff734540a0d749be6571b6cb5b37f, type: 3}
       propertyPath: stopAction
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19800004, guid: f95ff734540a0d749be6571b6cb5b37f, type: 3}
       propertyPath: InitialModule.size3D
@@ -375,7 +375,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800004, guid: f95ff734540a0d749be6571b6cb5b37f, type: 3}
       propertyPath: cullingMode
-      value: 3
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800004, guid: f95ff734540a0d749be6571b6cb5b37f, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: f95ff734540a0d749be6571b6cb5b37f, type: 3}
       propertyPath: looping
