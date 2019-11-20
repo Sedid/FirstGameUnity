@@ -44,27 +44,18 @@ public class bouge : MonoBehaviour
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            if (!GetComponent<Obstacles>().obstacle)
-            {
                 transform.Translate(-Vector3.forward * moveSpeed * Time.deltaTime / 2);
-            }
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            if (!GetComponent<Obstacles>().obstacle)
-            {
                 transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
-            }
         }
 
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            if (!GetComponent<Obstacles>().obstacle)
-            {
                 transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
-            }
         }
 
         // Animation walk lorsque fleches haut et bas sont appuyés
