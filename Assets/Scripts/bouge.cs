@@ -27,12 +27,15 @@ public class bouge : MonoBehaviour
         // Déplacement du personnage
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+            if(!GetComponent<DegatsRecus>().mur)
+           // GetComponent<Rigidbody>().AddForce(Vector3.forward * 900);
+                    transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
         }
 
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
+            
             transform.Translate(-Vector3.forward * moveSpeed * Time.deltaTime/2);
         }
 

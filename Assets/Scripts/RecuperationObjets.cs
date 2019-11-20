@@ -7,11 +7,14 @@ public class RecuperationObjets : MonoBehaviour
     public Text winText;
     private int count;
     GameObject virus;
+    GameObject diamond;
 
     private void Start()
     {
         virus = GameObject.Find("CFX_Virus").gameObject;
+        diamond = GameObject.Find("CFX_PickupDiamond").gameObject;
         virus.SetActive(false);
+        diamond.SetActive(false);
         count = 0;
         SetCountText();
         winText.text = "";
@@ -40,6 +43,7 @@ public class RecuperationObjets : MonoBehaviour
         else if (other.gameObject.CompareTag("Like") && Input.GetKeyDown(KeyCode.X))
         {
             other.gameObject.SetActive(false);
+            diamond.SetActive(true);
             count = count + 1;
             winText.text = "+1";
             SetCountText();

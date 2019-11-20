@@ -6,6 +6,12 @@ TagManager:
   tags:
   - ennemi
   - joueur
+  - Angry
+  - FxTemporaire
+  - Like
+  - Love
+  - mur
+  - obstacle
   layers:
   - Default
   - TransparentFX

@@ -10,17 +10,27 @@ public class DegatsRecus : MonoBehaviour
     Animator animations;
     public string ennemi;
     GameObject bamVFX;
+    public bool mur = false;
 
     // Start is called before the first frame update
     void Start()
     {
         animations = GetComponent<Animator>();
-        bamVFX = GameObject.Find("CFX_Hit").gameObject;
-        bamVFX.SetActive(false);
+        if (GameObject.Find("CFX_Hit")) {
+            bamVFX = GameObject.Find("CFX_Hit").gameObject;
+            bamVFX.SetActive(false);
+        }
+        
+        
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        print(collision.gameObject.name);
+        if (collision.gameObject.tag == "obstacle")
+        {
+            mur = true;
+        }
         if(collision.gameObject.tag != ennemi)
         {
             return;
@@ -53,6 +63,8 @@ public class DegatsRecus : MonoBehaviour
     }
     private void OnCollisionExit(Collision collision)
     {
+        mur = false;
+        print("fin de col");
         if (collision.transform.tag == "ennemi")
             if (collision.transform.GetComponentInParent<EnnemiPoursuite>().attaqueZombie)
             {
