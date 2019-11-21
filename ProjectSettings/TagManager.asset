@@ -11,6 +11,8 @@ TagManager:
   - Like
   - Love
   - obstacle
+  - png
+  - pnj
   layers:
   - Default
   - TransparentFX
