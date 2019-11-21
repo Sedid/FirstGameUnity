@@ -26,7 +26,7 @@ public class AttaquesDuJoueur : MonoBehaviour
             }
             enAttaque = false;
         }
-        if(Input.GetButton("Fire1") || Input.GetKeyDown(KeyCode.A))
+        if(Input.GetButton("Fire2") || Input.GetKeyDown(KeyCode.A))
         {
             joueurAnimator.SetBool("anim_attaquer", true);
             enAttaque = true;

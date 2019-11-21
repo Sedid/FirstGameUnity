@@ -4,20 +4,32 @@ using UnityEngine;
 
 public class Dialogue_pnj_1 : MonoBehaviour
 {
-    public GameObject dialogue;
+    GameObject dialogue;
+    GameObject boiteDialogue;
+    // Dialogue_png_1
 
-    void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        if (other.gameObject.CompareTag("pnj"))
+        dialogue = GameObject.Find("Dialogue_png_1").gameObject;
+        boiteDialogue = GameObject.Find("BoiteDialogue").gameObject;
+        dialogue.SetActive(false);
+        boiteDialogue.SetActive(false);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "joueur")
         {
             dialogue.SetActive(true);
+            boiteDialogue.SetActive(true);
         }
     }
-    void OnTriggerExit(Collider other)
+    void OnCollisionExit(Collision collision)
     {
-        if (other.gameObject.CompareTag("pnj"))
+        if (collision.transform.tag == "joueur")
         {
             dialogue.SetActive(false);
+            boiteDialogue.SetActive(false);
         }
     }
 }
