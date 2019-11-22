@@ -9,6 +9,7 @@ public class DegatsRecus : MonoBehaviour
     public Slider barrePdv;
     Animator animations;
     public string ennemi;
+    //AudioSource coupDeBatte;
     GameObject bamVFX;
 
     // Start is called before the first frame update
@@ -17,6 +18,10 @@ public class DegatsRecus : MonoBehaviour
         animations = GetComponent<Animator>();
         bamVFX = GameObject.Find("CFX_Hit").gameObject;
         bamVFX.SetActive(false);
+        //if(GameObject.Find("Joueur"))
+        //{
+        //    coupDeBatte = GetComponent<AudioSource>();
+        //}
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -31,8 +36,12 @@ public class DegatsRecus : MonoBehaviour
             {
                 barrePdv.value -= 30;
                 Debug.Log("J'attaque le zombie");
-                bamVFX.SetActive(true);
+                if (bamVFX != null)
+                {
+                    bamVFX.SetActive(true);
+                }
                 animations.SetBool("anim_degatsRecus", false);
+                //coupDeBatte.Play();
             }
         if (collision.transform.tag == "ennemi")
             if (collision.transform.GetComponentInParent<EnnemiPoursuite>().attaqueZombie)
@@ -57,6 +66,7 @@ public class DegatsRecus : MonoBehaviour
             if (collision.transform.GetComponentInParent<EnnemiPoursuite>().attaqueZombie)
             {
                 animations.SetBool("anim_degatsRecus", false);
+                bamVFX.SetActive(false);
             }
     }
 

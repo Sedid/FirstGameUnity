@@ -75,5 +75,6 @@ public class GestionDialogues : MonoBehaviour
     {
         //Debug.Log("Fin de la conversation");
         animator.SetBool("dialogue_ouvert", false);
+        GameObject.Find("Dialogue_png_1").SetActive(false);
     }
 }
