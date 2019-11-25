@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// permet d'être affiché sur Unity
 [System.Serializable]
 public class Dialogues
 {

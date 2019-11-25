@@ -9,6 +9,6 @@ public class ObjetFlottant : MonoBehaviour
    
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, myCurve.Evaluate((Time.time / 4 % myCurve.length)), transform.position.z);
+        transform.position = new Vector3(transform.position.x, myCurve.Evaluate((Time.time / 3.8f % myCurve.length)), transform.position.z);
     }
 }
