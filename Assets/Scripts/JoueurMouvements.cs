@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class bouge : MonoBehaviour
+public class JoueurMouvements : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    public float moveSpeed = 4f;
     public float turnSpeed = 250f;
     public Animator anim;
     public Slider barrePdv;

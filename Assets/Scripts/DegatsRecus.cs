@@ -66,7 +66,10 @@ public class DegatsRecus : MonoBehaviour
             if (collision.transform.GetComponentInParent<EnnemiPoursuite>().attaqueZombie)
             {
                 animations.SetBool("anim_degatsRecus", false);
-                bamVFX.SetActive(false);
+                if (bamVFX != null)
+                {
+                    bamVFX.SetActive(false);
+                }
             }
     }
 
