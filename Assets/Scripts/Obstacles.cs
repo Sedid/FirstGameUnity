@@ -20,11 +20,12 @@ public class Obstacles : MonoBehaviour
         if (collision.gameObject.name == "Portail")
         {
             Debug.Log("Collision avec le portail !");
-            this.transform.position = new Vector3(2.9f, 26, 243.8f);
-            if (this.transform.position == new Vector3(2.9f, 26, 243.8f))
+            this.transform.position = new Vector3(69.82f, 26, 359.9702f);
+            if (this.transform.position == new Vector3(69.82f, 26, 359.9702f))
             {
                 this.transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
                 joueurSpeed.moveSpeed = 15f;
+                joueurSpeed.turnSpeed = 10;
             }
         }
         if (collision.gameObject.name == "PortailSortie")
@@ -35,6 +36,7 @@ public class Obstacles : MonoBehaviour
             {
                 this.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
                 joueurSpeed.moveSpeed = .15f;
+                joueurSpeed.turnSpeed = 75f;
             }
         }
     }

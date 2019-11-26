@@ -9,15 +9,24 @@ public class RecuperationObjets : MonoBehaviour
     GameObject virus;
     GameObject splash;
     GameObject diamond;
+    GameObject squeletteViolet;
+    GameObject tornade;
+    GameObject beryl;
 
     private void Start()
     {
         virus = GameObject.Find("CFX_Virus").gameObject;
         splash = GameObject.Find("Big_Splash").gameObject;
         diamond = GameObject.Find("Diamond").gameObject;
+        squeletteViolet = GameObject.Find("DeathSkull").gameObject;
+        tornade = GameObject.Find("Tornado").gameObject;
+        beryl = GameObject.Find("Etoile").gameObject;
         virus.SetActive(false);
         splash.SetActive(false);
         diamond.SetActive(false);
+        squeletteViolet.SetActive(false);
+        tornade.SetActive(false);
+        beryl.SetActive(false);
         count = 0;
         SetCountText();
         winText.text = "";
@@ -41,7 +50,14 @@ public class RecuperationObjets : MonoBehaviour
             count = count + 2;
             winText.text = "+2";
             SetCountText();
-            splash.SetActive(true);
+            if (other.gameObject.name == "elixirBleu")
+            {
+                splash.SetActive(true);
+            }
+            if (other.gameObject.name == "béryl")
+            {
+                beryl.SetActive(true);
+            }
         }
         else if (other.gameObject.CompareTag("Like") && Input.GetKeyDown(KeyCode.Z))
         {
@@ -49,7 +65,14 @@ public class RecuperationObjets : MonoBehaviour
             count = count + 1;
             winText.text = "+1";
             SetCountText();
-            diamond.SetActive(true);
+            if (other.gameObject.name == "emeraude")
+            {
+                diamond.SetActive(true);
+            }
+            else if (other.gameObject.name == "fantome")
+            {
+                tornade.SetActive(true);
+            }
         }
         else if (other.gameObject.CompareTag("Angry") && Input.GetKeyDown(KeyCode.Z))
         {
@@ -57,7 +80,14 @@ public class RecuperationObjets : MonoBehaviour
             count = count - 1;
             winText.text = "-1";
             SetCountText();
-            virus.SetActive(true);
+            if (other.gameObject.name == "tete_de_mort")
+            {
+                virus.SetActive(true);
+            }
+            else if (other.gameObject.name == "elixir_malef")
+            {
+                squeletteViolet.SetActive(true);
+            }
         }
 
     }
