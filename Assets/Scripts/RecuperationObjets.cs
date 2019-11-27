@@ -7,11 +7,17 @@ public class RecuperationObjets : MonoBehaviour
     public Text winText;
     private int count;
     GameObject virus;
+    GameObject splash;
+    GameObject diamond;
 
     private void Start()
     {
         virus = GameObject.Find("CFX_Virus").gameObject;
+        splash = GameObject.Find("Big_Splash").gameObject;
+        diamond = GameObject.Find("Diamond").gameObject;
         virus.SetActive(false);
+        splash.SetActive(false);
+        diamond.SetActive(false);
         count = 0;
         SetCountText();
         winText.text = "";
@@ -29,28 +35,29 @@ public class RecuperationObjets : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Love") && Input.GetKeyDown(KeyCode.X))
+        if (other.gameObject.CompareTag("Love") && Input.GetKeyDown(KeyCode.Z))
         {
             other.gameObject.SetActive(false);
             count = count + 2;
             winText.text = "+2";
             SetCountText();
-            
+            splash.SetActive(true);
         }
-        else if (other.gameObject.CompareTag("Like") && Input.GetKeyDown(KeyCode.X))
+        else if (other.gameObject.CompareTag("Like") && Input.GetKeyDown(KeyCode.Z))
         {
             other.gameObject.SetActive(false);
             count = count + 1;
             winText.text = "+1";
             SetCountText();
+            diamond.SetActive(true);
         }
-        else if (other.gameObject.CompareTag("Angry") && Input.GetKeyDown(KeyCode.X))
+        else if (other.gameObject.CompareTag("Angry") && Input.GetKeyDown(KeyCode.Z))
         {
             other.gameObject.SetActive(false);
-            virus.SetActive(true);
             count = count - 1;
             winText.text = "-1";
             SetCountText();
+            virus.SetActive(true);
         }
 
     }
