@@ -27,6 +27,16 @@ public class Obstacles : MonoBehaviour
                 joueurSpeed.moveSpeed = 15f;
             }
         }
+        if (collision.gameObject.name == "PortailSortie")
+        {
+            Debug.Log("Collision avec le portail de sortie !");
+            this.transform.position = new Vector3(3.92f, 2.6985f, 5.55f);
+            if (this.transform.position == new Vector3(3.92f, 2.6985f, 5.55f))
+            {
+                this.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
+                joueurSpeed.moveSpeed = .15f;
+            }
+        }
     }
 
     private void OnCollisionExit(Collision collision)
