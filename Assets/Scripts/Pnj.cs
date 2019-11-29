@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pnj1 : MonoBehaviour
+public class Pnj : MonoBehaviour
 {
     public GameObject dialogue;
    // public GameObject dialogue2;

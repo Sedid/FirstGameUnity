@@ -75,13 +75,13 @@ public class GestionDialogues : MonoBehaviour
     {
         //Debug.Log("Fin de la conversation");
         animator.SetBool("dialogue_ouvert", false);
-        if (GameObject.Find("Dialogue_png_1") != null)
+        if (GameObject.Find("Dialogue_pnj_1") != null)
         {
-            GameObject.Find("Dialogue_png_1").SetActive(false);
+            GameObject.Find("Dialogue_pnj_1").SetActive(false);
         }
-        if (GameObject.Find("Dialogue_png_2") != null)
+        if (GameObject.Find("Dialogue_pnj_2") != null)
         {
-            GameObject.Find("Dialogue_png_2").SetActive(false);
+            GameObject.Find("Dialogue_pnj_2").SetActive(false);
         }
     }
 }

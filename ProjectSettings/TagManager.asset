@@ -12,6 +12,7 @@ TagManager:
   - Love
   - obstacle
   - pnj
+  - teleport
   layers:
   - Default
   - TransparentFX
