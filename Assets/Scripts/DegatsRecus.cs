@@ -57,6 +57,7 @@ public class DegatsRecus : MonoBehaviour
         if (barrePdv.value <= 0)
         {
             animations.SetBool("anim_mort", true);
+            //FindObjectOfType<AudioManager>().Play("mortJoueur");
             Destroy(bamVFX);
         }
     }

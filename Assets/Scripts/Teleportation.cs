@@ -12,6 +12,7 @@ public class Teleportation : MonoBehaviour
         if(other.gameObject.name == "PortailEntree")
         {
             transform.position = portailMap2.position;
+            FindObjectOfType<AudioManager>().Play("ghostly");
         }
         if (other.gameObject.name == "PortailSortie")
         {
