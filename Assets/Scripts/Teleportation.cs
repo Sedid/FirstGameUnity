@@ -7,12 +7,6 @@ public class Teleportation : MonoBehaviour
     public Transform portailMap2;
     public Transform portailMap1;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.name == "PortailEntree")

@@ -35,7 +35,7 @@ public class RecuperationObjets : MonoBehaviour
     void SetCountText()
     {
         countText.text = "Count: " + count.ToString();
-        if (count >= 6)
+        if (count >= 10)
         {
             winText.text = "You Win!";
             Time.timeScale = 0;

@@ -6,7 +6,7 @@ using TMPro;
 
 public class GestionDialogues : MonoBehaviour
 {
-    // Queue = liste avec des contraintes
+    // Queue = type de liste
     Queue<string> phrases;
 
     public Animator animator;
@@ -14,7 +14,6 @@ public class GestionDialogues : MonoBehaviour
     public Text nomJoueur;
     public Text texteDialogue;
 
-    // Start is called before the first frame update
     void Start()
     {
         phrases = new Queue<string>();
