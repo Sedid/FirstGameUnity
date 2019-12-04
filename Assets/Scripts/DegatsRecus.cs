@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class DegatsRecus : MonoBehaviour
@@ -9,19 +7,13 @@ public class DegatsRecus : MonoBehaviour
     public Slider barrePdv;
     Animator animations;
     public string ennemi;
-    //AudioSource coupDeBatte;
     GameObject bamVFX;
 
-    // Start is called before the first frame update
     void Start()
     {
         animations = GetComponent<Animator>();
         bamVFX = GameObject.Find("CFX_Hit").gameObject;
-        bamVFX.SetActive(false);
-        //if(GameObject.Find("Joueur"))
-        //{
-        //    coupDeBatte = GetComponent<AudioSource>();
-        //}
+        bamVFX.SetActive(false);  
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -41,7 +33,6 @@ public class DegatsRecus : MonoBehaviour
                     bamVFX.SetActive(true);
                 }
                 animations.SetBool("anim_degatsRecus", false);
-                //coupDeBatte.Play();
             }
         if (collision.transform.tag == "ennemi")
             if (collision.transform.GetComponentInParent<EnnemiPoursuite>().attaqueZombie)
@@ -57,7 +48,12 @@ public class DegatsRecus : MonoBehaviour
         if (barrePdv.value <= 0)
         {
             animations.SetBool("anim_mort", true);
-            //FindObjectOfType<AudioManager>().Play("mortJoueur");
+            if(collision.transform.tag == "ennemi")
+            {
+                print("lancement de l'animation mort du joueur");
+                FindObjectOfType<AudioManager>().Play("mortJoueur");
+            }
+            
             Destroy(bamVFX);
         }
     }
@@ -74,8 +70,4 @@ public class DegatsRecus : MonoBehaviour
             }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
 }

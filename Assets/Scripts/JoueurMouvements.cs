@@ -9,10 +9,17 @@ public class JoueurMouvements : MonoBehaviour
     public float turnSpeed = 250f;
     public Animator anim;
     public Slider barrePdv;
+    GameObject grassWalk;
+    GameObject grassRun;
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        grassWalk = GameObject.Find("grassWalk").gameObject;
+        grassWalk.SetActive(false);
+        grassRun = GameObject.Find("grassRun").gameObject;
+        grassRun.SetActive(false);
     }
 
     // Update is called once per frame
@@ -38,6 +45,7 @@ public class JoueurMouvements : MonoBehaviour
             if (!GetComponent<Obstacles>().obstacle)
             {
                 transform.Translate(Vector3.forward * moveSpeed*2 * Time.deltaTime );
+          
             }
         }
 
@@ -55,27 +63,34 @@ public class JoueurMouvements : MonoBehaviour
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
-                transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
+            transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
         }
 
         // Animation walk lorsque fleches haut et bas sont appuyés
         if (Input.GetKey(KeyCode.UpArrow) && (!Input.GetKey(KeyCode.LeftShift)) || (Input.GetKey(KeyCode.DownArrow)))
         {
+            
             anim.SetBool("anim_marcher", true);
             anim.SetBool("anim_repos", false);
             anim.SetBool("anim_courir", false);
+            grassWalk.SetActive(true);
+            grassRun.SetActive(false);
         }
         else if (Input.GetKey(KeyCode.UpArrow) && (Input.GetKey(KeyCode.LeftShift)))
         {
             anim.SetBool("anim_marcher", false);
             anim.SetBool("anim_repos", false);
             anim.SetBool("anim_courir", true);
+            grassWalk.SetActive(false);
+            grassRun.SetActive(true);
         }
         else
         {
             anim.SetBool("anim_marcher", false);
             anim.SetBool("anim_repos", true);
             anim.SetBool("anim_courir", false);
+            grassWalk.SetActive(false);
+            grassRun.SetActive(false);
         }
     }
 }
