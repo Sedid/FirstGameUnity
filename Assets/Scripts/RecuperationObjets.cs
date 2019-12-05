@@ -103,7 +103,7 @@ public class RecuperationObjets : MonoBehaviour
         if (other.gameObject.CompareTag("Love") && Input.GetKeyDown(KeyCode.Z))
         {
             other.gameObject.SetActive(false);
-            count = count + 2;
+            count += 2;
             winText.text = "+2";
             SetCountText();
             if (other.gameObject.name == "elixirBleu")
@@ -122,7 +122,7 @@ public class RecuperationObjets : MonoBehaviour
         else if (other.gameObject.CompareTag("Like") && Input.GetKeyDown(KeyCode.Z))
         {
             other.gameObject.SetActive(false);
-            count = count + 1;
+            count += 1;
             winText.text = "+1";
             SetCountText();
             if (other.gameObject.name == "emeraude")
@@ -169,7 +169,7 @@ public class RecuperationObjets : MonoBehaviour
         else if (other.gameObject.CompareTag("Angry") && Input.GetKeyDown(KeyCode.Z))
         {
             other.gameObject.SetActive(false);
-            count = count - 1;
+            count -= 1;
             winText.text = "-1";
             SetCountText();
             if (other.gameObject.name == "tete_de_mort")

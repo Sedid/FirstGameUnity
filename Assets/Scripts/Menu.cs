@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class ActivationMenu : MonoBehaviour {
+public class Menu : MonoBehaviour {
 	
 	public GameObject settings;
 	
