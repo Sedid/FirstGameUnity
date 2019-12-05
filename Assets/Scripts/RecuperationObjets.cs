@@ -22,6 +22,10 @@ public class RecuperationObjets : MonoBehaviour
     GameObject electricAir;
     GameObject greenStar;
     GameObject skullExplosion;
+    GameObject darkMagic;
+    GameObject disruptiveForce;
+    GameObject fireEffect;
+    GameObject powEffect;
 
     private void Start()
     {
@@ -56,6 +60,14 @@ public class RecuperationObjets : MonoBehaviour
         greenStar.SetActive(false);
         skullExplosion = GameObject.Find("SkullExplosion").gameObject;
         skullExplosion.SetActive(false);
+        darkMagic = GameObject.Find("DarkMagic").gameObject;
+        darkMagic.SetActive(false);
+        disruptiveForce = GameObject.Find("DisruptiveForce").gameObject;
+        disruptiveForce.SetActive(false);
+        fireEffect = GameObject.Find("FireEffect").gameObject;
+        fireEffect.SetActive(false);
+        powEffect = GameObject.Find("PowEffect").gameObject;
+        powEffect.SetActive(false);
     }
 
     void SetCountText()
@@ -119,6 +131,10 @@ public class RecuperationObjets : MonoBehaviour
             {
                 skullExplosion.SetActive(true);
             }
+            else if (other.gameObject.name == "redCane")
+            {
+                fireEffect.SetActive(true);
+            }
         }
         else if (other.gameObject.CompareTag("Angry") && Input.GetKeyDown(KeyCode.Z))
         {
@@ -137,6 +153,18 @@ public class RecuperationObjets : MonoBehaviour
             else if (other.gameObject.name == "Mannequin_Reine_Vampires")
             {
                 batsCloud.SetActive(true);
+            }
+            else if (other.gameObject.name == "orangeCane")
+            {
+                darkMagic.SetActive(true);
+            }
+            else if (other.gameObject.name == "purpleCane")
+            {
+                disruptiveForce.SetActive(true);
+            }
+            else if (other.gameObject.name == "yellowCane")
+            {
+                powEffect.SetActive(true);
             }
         }
 
