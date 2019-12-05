@@ -21,8 +21,7 @@ public class RecuperationObjets : MonoBehaviour
     GameObject electricityBall;
     GameObject electricAir;
     GameObject greenStar;
-    GameObject pouf;
-    GameObject darkMagicAura;
+    GameObject skullExplosion;
 
     private void Start()
     {
@@ -55,10 +54,8 @@ public class RecuperationObjets : MonoBehaviour
         electricAir.SetActive(false);
         greenStar = GameObject.Find("GreenStar").gameObject;
         greenStar.SetActive(false);
-        darkMagicAura = GameObject.Find("DarkMagicAura").gameObject;
-        darkMagicAura.SetActive(false);
-        pouf = GameObject.Find("Pouf").gameObject;
-        pouf.SetActive(false);
+        skullExplosion = GameObject.Find("SkullExplosion").gameObject;
+        skullExplosion.SetActive(false);
     }
 
     void SetCountText()
@@ -118,6 +115,10 @@ public class RecuperationObjets : MonoBehaviour
             {
                 greenStar.SetActive(true);
             }
+            else if (other.gameObject.name == "SkullHead")
+            {
+                skullExplosion.SetActive(true);
+            }
         }
         else if (other.gameObject.CompareTag("Angry") && Input.GetKeyDown(KeyCode.Z))
         {
@@ -136,14 +137,6 @@ public class RecuperationObjets : MonoBehaviour
             else if (other.gameObject.name == "Mannequin_Reine_Vampires")
             {
                 batsCloud.SetActive(true);
-            }
-            else if (other.gameObject.name == "orangeCane")
-            {
-                pouf.SetActive(true);
-            }
-            else if (other.gameObject.name == "purpleCane")
-            {
-                darkMagicAura.SetActive(true);
             }
         }
 
