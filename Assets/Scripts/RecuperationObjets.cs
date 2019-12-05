@@ -18,6 +18,11 @@ public class RecuperationObjets : MonoBehaviour
     // Carte 2
     GameObject batsCloud;
     GameObject fireShield;
+    GameObject electricityBall;
+    GameObject electricAir;
+    GameObject greenStar;
+    GameObject darkMagicAura;
+    GameObject pouf;
 
     private void Start()
     {
@@ -44,6 +49,16 @@ public class RecuperationObjets : MonoBehaviour
         batsCloud.SetActive(false);
         fireShield = GameObject.Find("FireShield").gameObject;
         fireShield.SetActive(false);
+        electricityBall = GameObject.Find("ElectricityBall").gameObject;
+        electricityBall.SetActive(false);
+        electricAir = GameObject.Find("ElectricAir").gameObject;
+        electricAir.SetActive(false);
+        greenStar = GameObject.Find("GreenStar").gameObject;
+        greenStar.SetActive(false);
+        darkMagicAura = GameObject.Find("DarkMagicAura").gameObject;
+        darkMagicAura.SetActive(false);
+        pouf = GameObject.Find("Pouf").gameObject;
+        pouf.SetActive(false);
     }
 
     void SetCountText()
@@ -91,6 +106,18 @@ public class RecuperationObjets : MonoBehaviour
             {
                 tornade.SetActive(true);
             }
+            else if (other.gameObject.name == "fantome2")
+            {
+                electricityBall.SetActive(true);
+            }
+            else if (other.gameObject.name == "blueCane")
+            {
+                electricAir.SetActive(true);
+            }
+            else if(other.gameObject.name == "greenCane")
+            {
+                greenStar.SetActive(true);
+            }
         }
         else if (other.gameObject.CompareTag("Angry") && Input.GetKeyDown(KeyCode.Z))
         {
@@ -109,6 +136,14 @@ public class RecuperationObjets : MonoBehaviour
             else if (other.gameObject.name == "Mannequin_Reine_Vampires")
             {
                 batsCloud.SetActive(true);
+            }
+            else if (other.gameObject.name == "greenCane")
+            {
+                darkMagicAura.SetActive(true);
+            }
+            else if (other.gameObject.name == "orangeCane")
+            {
+                pouf.SetActive(true);
             }
         }
 
