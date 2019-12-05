@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-
-// Ce code est crée en dehors du cours
-
 public class EnnemiPoursuite : MonoBehaviour
 {
     static Animator animationsEnnemi;
@@ -12,7 +8,7 @@ public class EnnemiPoursuite : MonoBehaviour
     public Slider barrePdvJoueur;
     public bool attaqueZombie = false;
     float tempsDAttaque = 1f;
-    float tempsDebutAttaque;
+    readonly float tempsDebutAttaque = 0;
     GameObject zombieWalk;
     GameObject zombieAttack;
     GameObject playerDeath;

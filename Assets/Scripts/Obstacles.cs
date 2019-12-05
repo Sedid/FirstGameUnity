@@ -5,14 +5,7 @@ using UnityEngine;
 public class Obstacles : MonoBehaviour
 {
     public bool obstacle = false;
-    JoueurMouvements joueurSpeed;
-    Rigidbody rigidbodyJoueur;
 
-    private void Start()
-    {
-        joueurSpeed = gameObject.GetComponent<JoueurMouvements>();
-        rigidbodyJoueur = gameObject.GetComponent<Rigidbody>();
-    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "obstacle")

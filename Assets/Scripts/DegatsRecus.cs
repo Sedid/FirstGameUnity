@@ -7,12 +7,12 @@ public class DegatsRecus : MonoBehaviour
     public Slider barrePdv;
     Animator animations;
     public string ennemi;
-    GameObject bamVFX;
+    public GameObject bamVFX;
 
     void Start()
     {
         animations = GetComponent<Animator>();
-        bamVFX = GameObject.Find("CFX_Hit").gameObject;
+        //bamVFX = GameObject.Find("CFX_Hit").gameObject;
         bamVFX.SetActive(false);  
     }
 
@@ -23,7 +23,7 @@ public class DegatsRecus : MonoBehaviour
             return;
         }
         
-       if(collision.transform.tag == "joueur")
+       if(collision.transform.CompareTag("joueur"))
              if (collision.transform.GetComponentInParent<AttaquesDuJoueur>().enAttaque)
             {
                 barrePdv.value -= 30;
@@ -32,9 +32,8 @@ public class DegatsRecus : MonoBehaviour
                 {
                     bamVFX.SetActive(true);
                 }
-                animations.SetBool("anim_degatsRecus", false);
             }
-        if (collision.transform.tag == "ennemi")
+        if (collision.transform.CompareTag("ennemi"))
             if (collision.transform.GetComponentInParent<EnnemiPoursuite>().attaqueZombie)
             {
                 barrePdv.value -= 30;
@@ -42,30 +41,31 @@ public class DegatsRecus : MonoBehaviour
                 animations.SetBool("anim_repos", false);
                 animations.SetBool("anim_marcher", false);
                 animations.SetBool("anim_attaquer", false);
-                animations.SetBool("anim_degatsRecus", true);
+                if (bamVFX != null)
+                {
+                    animations.SetBool("anim_degatsRecus", true);
+                }
             }
 
         if (barrePdv.value <= 0)
         {
             animations.SetBool("anim_mort", true);
-            animations.SetBool("anim_degatsRecus", false);
-            if (collision.transform.tag == "ennemi")
+            if (bamVFX != null)
             {
-                print("lancement de l'animation mort du joueur");
-                FindObjectOfType<AudioManager>().Play("mortJoueur");
+                animations.SetBool("anim_degatsRecus", false);
             }
-            
+    
             Destroy(bamVFX);
         }
     }
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.transform.tag == "ennemi")
+        if (collision.transform.CompareTag("ennemi"))
             if (collision.transform.GetComponentInParent<EnnemiPoursuite>().attaqueZombie)
             {
-                animations.SetBool("anim_degatsRecus", false);
                 if (bamVFX != null)
                 {
+                    animations.SetBool("anim_degatsRecus", false);
                     bamVFX.SetActive(false);
                 }
             }
