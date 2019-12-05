@@ -48,7 +48,8 @@ public class DegatsRecus : MonoBehaviour
         if (barrePdv.value <= 0)
         {
             animations.SetBool("anim_mort", true);
-            if(collision.transform.tag == "ennemi")
+            animations.SetBool("anim_degatsRecus", false);
+            if (collision.transform.tag == "ennemi")
             {
                 print("lancement de l'animation mort du joueur");
                 FindObjectOfType<AudioManager>().Play("mortJoueur");

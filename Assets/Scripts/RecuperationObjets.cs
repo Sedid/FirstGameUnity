@@ -6,6 +6,8 @@ public class RecuperationObjets : MonoBehaviour
     public Text countText;
     public Text winText;
     private int count;
+
+    // Carte 1
     GameObject virus;
     GameObject splash;
     GameObject diamond;
@@ -13,8 +15,17 @@ public class RecuperationObjets : MonoBehaviour
     GameObject tornade;
     GameObject beryl;
 
+    // Carte 2
+    GameObject batsCloud;
+    GameObject fireShield;
+
     private void Start()
     {
+        count = 0;
+        SetCountText();
+        winText.text = "";
+
+        //Carte 1
         virus = GameObject.Find("CFX_Virus").gameObject;
         splash = GameObject.Find("Big_Splash").gameObject;
         diamond = GameObject.Find("Diamond").gameObject;
@@ -27,9 +38,12 @@ public class RecuperationObjets : MonoBehaviour
         squeletteViolet.SetActive(false);
         tornade.SetActive(false);
         beryl.SetActive(false);
-        count = 0;
-        SetCountText();
-        winText.text = "";
+
+        //Carte 2
+        batsCloud = GameObject.Find("BatsCloud").gameObject;
+        batsCloud.SetActive(false);
+        fireShield = GameObject.Find("FireShield").gameObject;
+        fireShield.SetActive(false);
     }
 
     void SetCountText()
@@ -57,6 +71,10 @@ public class RecuperationObjets : MonoBehaviour
             if (other.gameObject.name == "béryl")
             {
                 beryl.SetActive(true);
+            }
+            else if (other.gameObject.name == "Hannya")
+            {
+                fireShield.SetActive(true);
             }
         }
         else if (other.gameObject.CompareTag("Like") && Input.GetKeyDown(KeyCode.Z))
@@ -87,6 +105,10 @@ public class RecuperationObjets : MonoBehaviour
             else if (other.gameObject.name == "elixir_malef")
             {
                 squeletteViolet.SetActive(true);
+            }
+            else if (other.gameObject.name == "Mannequin_Reine_Vampires")
+            {
+                batsCloud.SetActive(true);
             }
         }
 
