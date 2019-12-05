@@ -26,6 +26,12 @@ public class RecuperationObjets : MonoBehaviour
     GameObject disruptiveForce;
     GameObject fireEffect;
     GameObject powEffect;
+    GameObject smokeEffect;
+    GameObject auraBubble;
+    GameObject pickupHeart;
+    GameObject rockEffect;
+    GameObject pickupSmiley;
+    GameObject blueVirus;
 
     private void Start()
     {
@@ -68,6 +74,18 @@ public class RecuperationObjets : MonoBehaviour
         fireEffect.SetActive(false);
         powEffect = GameObject.Find("PowEffect").gameObject;
         powEffect.SetActive(false);
+        smokeEffect = GameObject.Find("SmokeEffect").gameObject;
+        smokeEffect.SetActive(false);
+        auraBubble = GameObject.Find("AuraBubble").gameObject;
+        auraBubble.SetActive(false);
+        pickupHeart = GameObject.Find("PickupHeart").gameObject;
+        pickupHeart.SetActive(false);
+        rockEffect = GameObject.Find("RockEffect").gameObject;
+        rockEffect.SetActive(false);
+        pickupSmiley = GameObject.Find("PickupSmiley").gameObject;
+        pickupSmiley.SetActive(false);
+        blueVirus = GameObject.Find("BlueVirus").gameObject;
+        blueVirus.SetActive(false);
     }
 
     void SetCountText()
@@ -135,6 +153,18 @@ public class RecuperationObjets : MonoBehaviour
             {
                 fireEffect.SetActive(true);
             }
+            else if (other.gameObject.name == "orangeSpiral")
+            {
+                auraBubble.SetActive(true);
+            }
+            else if (other.gameObject.name == "pinkSpiral")
+            {
+                pickupHeart.SetActive(true);
+            }
+            else if (other.gameObject.name == "yellowSpiral")
+            {
+                pickupSmiley.SetActive(true);
+            }
         }
         else if (other.gameObject.CompareTag("Angry") && Input.GetKeyDown(KeyCode.Z))
         {
@@ -165,6 +195,18 @@ public class RecuperationObjets : MonoBehaviour
             else if (other.gameObject.name == "yellowCane")
             {
                 powEffect.SetActive(true);
+            }
+            else if (other.gameObject.name == "greenSpiral")
+            {
+                smokeEffect.SetActive(true);
+            }
+            else if (other.gameObject.name == "redSpiral")
+            {
+                rockEffect.SetActive(true);
+            }
+            else if (other.gameObject.name == "blueSpiral")
+            {
+                blueVirus.SetActive(true);
             }
         }
 
