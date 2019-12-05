@@ -21,8 +21,8 @@ public class RecuperationObjets : MonoBehaviour
     GameObject electricityBall;
     GameObject electricAir;
     GameObject greenStar;
-    GameObject darkMagicAura;
     GameObject pouf;
+    GameObject darkMagicAura;
 
     private void Start()
     {
@@ -114,7 +114,7 @@ public class RecuperationObjets : MonoBehaviour
             {
                 electricAir.SetActive(true);
             }
-            else if(other.gameObject.name == "greenCane")
+            else if (other.gameObject.name == "greenCane")
             {
                 greenStar.SetActive(true);
             }
@@ -137,13 +137,13 @@ public class RecuperationObjets : MonoBehaviour
             {
                 batsCloud.SetActive(true);
             }
-            else if (other.gameObject.name == "greenCane")
-            {
-                darkMagicAura.SetActive(true);
-            }
             else if (other.gameObject.name == "orangeCane")
             {
                 pouf.SetActive(true);
+            }
+            else if (other.gameObject.name == "purpleCane")
+            {
+                darkMagicAura.SetActive(true);
             }
         }
 
