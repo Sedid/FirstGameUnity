@@ -102,5 +102,17 @@ public class GestionDialogues : MonoBehaviour
         {
             GameObject.Find("Dialogue_pnj_7").SetActive(false);
         }
+        if (GameObject.Find("Dialogue_pnj_8") != null)
+        {
+            GameObject.Find("Dialogue_pnj_8").SetActive(false);
+        }
+        if (GameObject.Find("Dialogue_pnj_9") != null)
+        {
+            GameObject.Find("Dialogue_pnj_9").SetActive(false);
+        }
+        if (GameObject.Find("Dialogue_pnj_10") != null)
+        {
+            GameObject.Find("Dialogue_pnj_10").SetActive(false);
+        }
     }
 }

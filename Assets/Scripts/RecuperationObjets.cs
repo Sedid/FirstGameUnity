@@ -6,6 +6,7 @@ public class RecuperationObjets : MonoBehaviour
     public Text countText;
     public Text winText;
     private int count;
+    public Slider hpZombie;
 
     // Carte 1
     GameObject virus;
@@ -91,7 +92,7 @@ public class RecuperationObjets : MonoBehaviour
     void SetCountText()
     {
         countText.text = "Count: " + count.ToString();
-        if (count >= 10)
+        if (count >= 8 && hpZombie.value <= 0)
         {
             winText.text = "You Win!";
             Time.timeScale = 0;
