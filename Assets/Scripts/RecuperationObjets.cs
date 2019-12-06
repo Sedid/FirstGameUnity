@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class RecuperationObjets : MonoBehaviour
@@ -7,6 +8,11 @@ public class RecuperationObjets : MonoBehaviour
     public Text winText;
     private int count;
     public Slider hpZombie;
+    public Slider hpJoueur;
+    GameObject unPoint;
+    GameObject twoPoints;
+    GameObject malusUnPoint;
+    readonly float timer = 1f;
 
     // Carte 1
     GameObject virus;
@@ -36,9 +42,17 @@ public class RecuperationObjets : MonoBehaviour
 
     private void Start()
     {
+        //playerDeath = GameObject.Find("playerDeath").gameObject;
+        //playerDeath.SetActive(false);
         count = 0;
         SetCountText();
         winText.text = "";
+        unPoint = GameObject.Find("unPoint").gameObject;
+        unPoint.SetActive(false);
+        malusUnPoint = GameObject.Find("malusUnPoint").gameObject;
+        malusUnPoint.SetActive(false);
+        twoPoints = GameObject.Find("twoPoints").gameObject;
+        twoPoints.SetActive(false);
 
         //Carte 1
         virus = GameObject.Find("CFX_Virus").gameObject;
@@ -88,11 +102,10 @@ public class RecuperationObjets : MonoBehaviour
         blueVirus = GameObject.Find("BlueVirus").gameObject;
         blueVirus.SetActive(false);
     }
-
     void SetCountText()
     {
         countText.text = "Count: " + count.ToString();
-        if (count >= 8 && hpZombie.value <= 0)
+        if (count >= 9 && hpZombie.value <= 0)
         {
             winText.text = "You Win!";
             Time.timeScale = 0;
@@ -105,7 +118,9 @@ public class RecuperationObjets : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             count += 2;
-            winText.text = "+2";
+            //winText.text = "+2";
+            StartCoroutine(DeuxPoints());
+
             SetCountText();
             if (other.gameObject.name == "elixirBleu")
             {
@@ -124,7 +139,8 @@ public class RecuperationObjets : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             count += 1;
-            winText.text = "+1";
+            //winText.text = "+1";
+            StartCoroutine(UnPoint());
             SetCountText();
             if (other.gameObject.name == "emeraude")
             {
@@ -171,8 +187,15 @@ public class RecuperationObjets : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             count -= 1;
-            winText.text = "-1";
+            //winText.text = "-1";
+            StartCoroutine(PerdreUnPoint());
             SetCountText();
+            hpJoueur.value -= 5;
+            //if(hpJoueur.value <= 0)
+            //{
+            //    //animations.SetBool("anim_mort", true);
+            //    //playerDeath.SetActive(true);
+            //}
             if (other.gameObject.name == "tete_de_mort")
             {
                 virus.SetActive(true);
@@ -213,4 +236,22 @@ public class RecuperationObjets : MonoBehaviour
 
     }
 
+    IEnumerator UnPoint()
+    {
+        unPoint.SetActive(true);
+        yield return new WaitForSeconds(timer);
+        unPoint.SetActive(false);
+    }
+    IEnumerator DeuxPoints()
+    {
+        twoPoints.SetActive(true);
+        yield return new WaitForSeconds(timer);
+        twoPoints.SetActive(false);
+    }
+    IEnumerator PerdreUnPoint()
+    {
+        malusUnPoint.SetActive(true);
+        yield return new WaitForSeconds(timer);
+        malusUnPoint.SetActive(false);
+    }
 }

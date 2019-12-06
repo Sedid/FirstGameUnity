@@ -73,6 +73,7 @@ public class JoueurMouvements : MonoBehaviour
             anim.SetBool("anim_marcher", true);
             anim.SetBool("anim_repos", false);
             anim.SetBool("anim_courir", false);
+            anim.SetBool("anim_degatsRecus", false);
             grassWalk.SetActive(true);
             grassRun.SetActive(false);
         }
@@ -81,6 +82,7 @@ public class JoueurMouvements : MonoBehaviour
             anim.SetBool("anim_marcher", false);
             anim.SetBool("anim_repos", false);
             anim.SetBool("anim_courir", true);
+            anim.SetBool("anim_degatsRecus", false);
             grassWalk.SetActive(false);
             grassRun.SetActive(true);
         }
