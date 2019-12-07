@@ -14,6 +14,7 @@ public class RecuperationObjets : MonoBehaviour
     GameObject malusUnPoint;
     readonly float timer = 1f;
     GameObject victoire;
+    GameObject pressZ;
 
     // Carte 1
     GameObject virus;
@@ -54,6 +55,9 @@ public class RecuperationObjets : MonoBehaviour
         twoPoints.SetActive(false);
         victoire = GameObject.Find("victoire").gameObject;
         victoire.SetActive(false);
+        pressZ = GameObject.Find("pressZ").gameObject;
+        pressZ.SetActive(false);
+
 
         //Carte 1
         virus = GameObject.Find("CFX_Virus").gameObject;
@@ -114,6 +118,20 @@ public class RecuperationObjets : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if ((other.transform.CompareTag("Love")) || (other.transform.CompareTag("Like")) || (other.transform.CompareTag("Angry")))
+        {
+            pressZ.SetActive(true);
+        }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if ((other.transform.CompareTag("Love")) || (other.transform.CompareTag("Like")) || (other.transform.CompareTag("Angry")))
+        {
+            pressZ.SetActive(false);
+        }
+    }
 
     void OnTriggerStay(Collider other)
     {
@@ -122,8 +140,8 @@ public class RecuperationObjets : MonoBehaviour
             other.gameObject.SetActive(false);
             count += 2;
             //winText.text = "+2";
+            pressZ.SetActive(false);
             StartCoroutine(DeuxPoints());
-
             SetCountText();
             if (other.gameObject.name == "elixirBleu")
             {
@@ -143,6 +161,7 @@ public class RecuperationObjets : MonoBehaviour
             other.gameObject.SetActive(false);
             count += 1;
             //winText.text = "+1";
+            pressZ.SetActive(false);
             StartCoroutine(UnPoint());
             SetCountText();
             if (other.gameObject.name == "emeraude")
@@ -191,6 +210,7 @@ public class RecuperationObjets : MonoBehaviour
             other.gameObject.SetActive(false);
             count -= 1;
             //winText.text = "-1";
+            pressZ.SetActive(false);
             StartCoroutine(PerdreUnPoint());
             SetCountText();
             hpJoueur.value -= 10;
