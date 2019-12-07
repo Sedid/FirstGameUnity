@@ -14,7 +14,7 @@ public class Teleportation : MonoBehaviour
             transform.position = portailMap2.position;
             FindObjectOfType<GestionSons>().Play("teleport");
 
-            FindObjectOfType<GestionSons>().Play("ghostly");
+            FindObjectOfType<GestionSons>().Play("ThisIsHalloween");
         }
         if (other.gameObject.name == "PortailSortie")
         {

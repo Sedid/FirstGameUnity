@@ -107,8 +107,11 @@ public class DegatsRecus : MonoBehaviour
 
     IEnumerator TuEsMort()
     {
-        tuEsMort.SetActive(true);
-        yield return new WaitForSeconds(5);
-        Destroy(tuEsMort);
+        if (tuEsMort != null)
+        {
+            tuEsMort.SetActive(true);
+            yield return new WaitForSeconds(5);
+            Destroy(tuEsMort);
+        }
     }
 }
