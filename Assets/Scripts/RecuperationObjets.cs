@@ -13,6 +13,7 @@ public class RecuperationObjets : MonoBehaviour
     GameObject twoPoints;
     GameObject malusUnPoint;
     readonly float timer = 1f;
+    GameObject victoire;
 
     // Carte 1
     GameObject virus;
@@ -42,8 +43,6 @@ public class RecuperationObjets : MonoBehaviour
 
     private void Start()
     {
-        //playerDeath = GameObject.Find("playerDeath").gameObject;
-        //playerDeath.SetActive(false);
         count = 0;
         SetCountText();
         winText.text = "";
@@ -53,6 +52,8 @@ public class RecuperationObjets : MonoBehaviour
         malusUnPoint.SetActive(false);
         twoPoints = GameObject.Find("twoPoints").gameObject;
         twoPoints.SetActive(false);
+        victoire = GameObject.Find("victoire").gameObject;
+        victoire.SetActive(false);
 
         //Carte 1
         virus = GameObject.Find("CFX_Virus").gameObject;
@@ -107,10 +108,12 @@ public class RecuperationObjets : MonoBehaviour
         countText.text = "Count: " + count.ToString();
         if (count >= 9 && hpZombie.value <= 0)
         {
-            winText.text = "You Win!";
+            //winText.text = "You Win!";
+            victoire.SetActive(true);
             Time.timeScale = 0;
         }
     }
+
 
     void OnTriggerStay(Collider other)
     {
@@ -190,11 +193,15 @@ public class RecuperationObjets : MonoBehaviour
             //winText.text = "-1";
             StartCoroutine(PerdreUnPoint());
             SetCountText();
-            hpJoueur.value -= 5;
-            //if(hpJoueur.value <= 0)
+            hpJoueur.value -= 10;
+            if(hpJoueur.value <= 0)
+            {
+                DegatsRecus.instance.JoueurMort();
+            }
+            //if (hpJoueur.value <= 0 && hpZombie.value > 0)
+            //    console.log(hpZombie);
             //{
-            //    //animations.SetBool("anim_mort", true);
-            //    //playerDeath.SetActive(true);
+            //    DegatsRecus.instance.JoueurMort();
             //}
             if (other.gameObject.name == "tete_de_mort")
             {

@@ -1,19 +1,54 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class DegatsRecus : MonoBehaviour
 {
 
+    //Singleton, instance unique d'une classe
+    //Permet d'utiliser n'importe quel élément de cette classe dans une autre classe
+    //Ici, on l'utilise pour appeler la fonction JoueurMort() dans le script RecuperationObjets
+    public static DegatsRecus instance;
+
     public Slider barrePdv;
+    public Slider vitaliteZombie;
     Animator animations;
     public string ennemi;
     public GameObject bamVFX;
+    public GameObject tuEsMort;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
         animations = GetComponent<Animator>();
         //bamVFX = GameObject.Find("CFX_Hit").gameObject;
-        bamVFX.SetActive(false);  
+        bamVFX.SetActive(false);
+        tuEsMort.SetActive(false);
+    }
+
+    public void JoueurMort()
+    {
+        animations.SetBool("anim_mort", true);
+        if (bamVFX != null)
+        {
+            animations.SetBool("anim_degatsRecus", false);
+        }
+        StartCoroutine(TuEsMort());
+        Destroy(bamVFX);
+    }
+
+    public void ZombieMort()
+    {
+        animations.SetBool("zombie_mort", true);
+        if (bamVFX != null)
+        {
+            animations.SetBool("anim_degatsRecus", false);
+        }
+        Destroy(bamVFX);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -26,7 +61,7 @@ public class DegatsRecus : MonoBehaviour
        if(collision.transform.CompareTag("joueur"))
              if (collision.transform.GetComponentInParent<AttaquesDuJoueur>().enAttaque)
             {
-                barrePdv.value -= 30;
+                vitaliteZombie.value -= 30;
                 Debug.Log("J'attaque le zombie");
                 if (bamVFX != null)
                 {
@@ -49,14 +84,13 @@ public class DegatsRecus : MonoBehaviour
 
         if (barrePdv.value <= 0)
         {
-            animations.SetBool("anim_mort", true);
-            if (bamVFX != null)
-            {
-                animations.SetBool("anim_degatsRecus", false);
-            }
-    
-            Destroy(bamVFX);
+            JoueurMort();
         }
+        else if (vitaliteZombie.value <= 0)
+        {
+            ZombieMort();
+        }
+
     }
     private void OnCollisionExit(Collision collision)
     {
@@ -71,4 +105,10 @@ public class DegatsRecus : MonoBehaviour
             }
     }
 
+    IEnumerator TuEsMort()
+    {
+        tuEsMort.SetActive(true);
+        yield return new WaitForSeconds(5);
+        Destroy(tuEsMort);
+    }
 }

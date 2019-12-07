@@ -18,5 +18,11 @@ public class Menu : MonoBehaviour {
 	{
 		Application.Quit();
 	}
+
+    public void RestartGame()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
 
