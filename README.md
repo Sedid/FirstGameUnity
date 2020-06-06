@@ -1,4 +1,4 @@
-Eng: /!\ Go to FORK V2 to see the game Halloville /!\
+Eng: /!\ Go to FORK V2 to see the game Halloville /!\\
 Fr : /!\ Aller à la fork V2 pour voir le jeu Halloville /!\
 
 # Halloville
