@@ -1,0 +1,20 @@
+name: Halloville
+
+on: 
+    pull_request:
+        branches:
+            - v2
+
+jobs:
+    test:
+        name: Run Tests
+        runs-on: ubuntu-latest
+        container:
+            image:  node:20
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                node-version: 20
+            - run: npm ci
+            - run: npm test
+            - run: npm run build
